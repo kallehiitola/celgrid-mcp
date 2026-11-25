@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "celgrid": {
+      "type": "http",
+      "url": "https://celgrid.ai/mcp"
+    }
+  }
+}

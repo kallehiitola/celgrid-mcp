@@ -1,6 +1,6 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
-  "name": "io.github.kallehiitola/celgrid-mcp",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ai.celgrid/celgrid",
   "title": "Celgrid Pixel-Native Sprite & Animation Studio",
   "description": "Create indexed pixel sprites and animations. Export to Godot, Unity, Phaser, and Aseprite.",
   "websiteUrl": "https://celgrid.ai",
@@ -9,36 +9,6 @@
     "source": "github"
   },
   "version": "1.0.0",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "celgrid-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      },
-      "environmentVariables": [
-        {
-          "name": "CELGRID_API_KEY",
-          "description": "Personal Celgrid API key (cg_live_...) from https://celgrid.ai/settings (optional for reading the guide and browsing public starter packs).",
-          "isRequired": false,
-          "isSecret": true
-        },
-        {
-          "name": "ANTHROPIC_API_KEY",
-          "description": "Optional BYOK Anthropic API key (pay Anthropic directly + flat 15% Celgrid orchestration fee).",
-          "isRequired": false,
-          "isSecret": true
-        },
-        {
-          "name": "CELGRID_URL",
-          "description": "Celgrid server URL (defaults to https://celgrid.ai; override for local self-hosted Studio).",
-          "isRequired": false,
-          "isSecret": false
-        }
-      ]
-    }
-  ],
   "remotes": [
     {
       "type": "streamable-http",
@@ -46,13 +16,13 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Optional for public discovery. For account tools, provide Bearer followed by the personal key from https://celgrid.ai/settings#api-keys.",
+          "description": "Optional for public discovery. For account tools, provide Bearer followed by your personal key from https://celgrid.ai/settings#api-keys.",
           "isRequired": false,
           "isSecret": true
         },
         {
           "name": "X-Anthropic-Key",
-          "description": "Optional provider key for BYOK generation with a 15% prepaid Celgrid fee.",
+          "description": "Optional Anthropic API key for BYOK generation with a flat 15% prepaid Celgrid orchestration fee.",
           "isRequired": false,
           "isSecret": true
         }

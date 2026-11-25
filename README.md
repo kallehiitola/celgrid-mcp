@@ -1,5 +1,8 @@
 # Celgrid MCP Server (`celgrid-mcp`)
 
+[![kallehiitola/celgrid-mcp MCP server](https://glama.ai/mcp/servers/kallehiitola/celgrid-mcp/badges/score.svg)](https://glama.ai/mcp/servers/kallehiitola/celgrid-mcp)
+[![Official MCP Registry](https://img.shields.io/badge/MCP%20Registry-ai.celgrid%2Fcelgrid-blue)](https://registry.modelcontextprotocol.io/v0/servers?search=ai.celgrid%2Fcelgrid)
+
 Pixel-native AI sprite studio and animation **Model Context Protocol (MCP)** server for **Claude Code, Cursor, OpenAI Codex, Windsurf, and Cline** backed by [Celgrid](https://celgrid.ai).
 
 Built for both human game developers and AI coding agents making 2D games: instead of blurry diffusion images full of mixels and dirty alpha halos, Celgrid generates **exact 1:1 indexed integer pixel grids (4x4 to 64x64)** on locked color palettes with 3-pass Vision self-critique, paired with a **$0 browser pixel editor**, **AI Ripple Edit** across frames/animations, and lossless engine packs for **Godot 4, Unity, Phaser 3, and Aseprite**.
