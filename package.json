@@ -1,5 +1,6 @@
 {
   "name": "celgrid-mcp",
+  "mcpName": "io.github.kallehiitola/celgrid-mcp",
   "version": "1.0.0",
   "description": "Pixel-native AI sprite studio and animation MCP server for Claude Code, Cursor, Codex, and Cline (exact 1:1 indexed grids, zero mixels or alpha halos, lossless Godot 4 / Unity / Phaser 3 / Aseprite packs).",
   "license": "MIT",
@@ -34,6 +35,7 @@
   "files": [
     "bin/",
     ".cursor/",
+    "icon.png",
     "README.md",
     "LICENSE",
     "llms-install.md",

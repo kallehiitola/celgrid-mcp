@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
-  "name": "ai.celgrid/celgrid-mcp",
+  "name": "io.github.kallehiitola/celgrid-mcp",
   "title": "Celgrid Pixel-Native Sprite & Animation Studio",
   "description": "Generate exact 1:1 indexed pixel art sprites, frame-by-frame animations, AI Ripple Edits, and lossless Godot 4, Unity, Phaser 3, and Aseprite packs with zero diffusion mixels or alpha halos.",
   "websiteUrl": "https://celgrid.ai",
