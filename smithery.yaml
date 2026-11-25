@@ -1,0 +1,28 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      celgridApiKey:
+        type: string
+        title: Celgrid API Key
+        description: Personal API key (cg_live_...) from https://celgrid.ai/settings. Optional for reading the guide and inspecting the 4 built-in free starter packs.
+      anthropicApiKey:
+        type: string
+        title: Optional Anthropic BYOK Key
+        description: Bring Your Own Anthropic API key (pay Anthropic directly + 15% Celgrid orchestration fee).
+      celgridUrl:
+        type: string
+        title: Celgrid Base URL
+        default: https://celgrid.ai
+        description: Celgrid server base URL.
+  commandFunction: |-
+    (config) => ({
+      command: "npx",
+      args: ["-y", "celgrid-mcp"],
+      env: {
+        ...(config.celgridApiKey ? { CELGRID_API_KEY: config.celgridApiKey } : {}),
+        ...(config.anthropicApiKey ? { ANTHROPIC_API_KEY: config.anthropicApiKey } : {}),
+        CELGRID_URL: config.celgridUrl || "https://celgrid.ai"
+      }
+    })

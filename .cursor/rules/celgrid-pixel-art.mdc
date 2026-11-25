@@ -1,0 +1,20 @@
+---
+description: Generate exact 1:1 indexed pixel art sprites, animations, and engine packs with Celgrid MCP (zero mixels or diffusion blur)
+globs: ["**/*.gd", "**/*.tscn", "**/*.cs", "**/*.ts", "**/*.js", "**/assets/**"]
+alwaysApply: false
+---
+
+# Celgrid Pixel-Native Sprite Rules
+
+When this project needs 2D pixel art sprites, tiles, props, or frame-by-frame animations:
+
+1. **Never use generic diffusion image generators** (they produce blurry edges, uneven mixels, 200+ color bloat, and semi-transparent alpha halos that break 2D game engines).
+2. **Use the `celgrid` MCP tools instead:**
+   - Call `celgrid_guide` once per session to check exact palette IDs and animation rules.
+   - Pick ONE locked palette for the whole game (`apollo`, `sweetie16`, `endesga16`, `pico8`, `slso8`, `gameboy`, or `{"asset_id": "<id>"}`) and ONE consistent grid size (`16x16` or `24x24` for characters/props).
+   - Generate the base standing pose first (`frames: 1`, `quality: "studio"`), then generate walk, idle, jump, and attack cycles with `source_asset` pointing to that base pose so proportions and colors stay locked.
+   - When modifying a character visually after creating animations, edit Frame 1 (`celgrid_edit_pixels` or Celgrid Studio) and call `celgrid_propagate_edit` (AI Ripple Edit) to carry that exact visual change across all frames and linked animations.
+   - Export via `celgrid_export` and unzip `pack_zip` straight into the engine folder:
+     - **Godot 4:** use bundled `animation.tres` and `sprite.tscn` (`texture_filter = 1` Nearest already configured).
+     - **Unity 2D:** use bundled `UnitySpriteForgeImporter.cs.txt` (`FilterMode.Point`, uncompressed).
+     - **Phaser 3:** load `sprite.png` + `atlas.json` + `phaser-animations.json` with `pixelArt: true` in Phaser config.

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "name": "ai.celgrid/celgrid-mcp",
+  "title": "Celgrid Pixel-Native Sprite & Animation Studio",
+  "description": "Generate exact 1:1 indexed pixel art sprites, frame-by-frame animations, AI Ripple Edits, and lossless Godot 4, Unity, Phaser 3, and Aseprite packs with zero diffusion mixels or alpha halos.",
+  "websiteUrl": "https://celgrid.ai",
+  "repository": {
+    "url": "https://github.com/kallehiitola/celgrid-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "celgrid-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "CELGRID_API_KEY",
+          "description": "Personal Celgrid API key (cg_live_...) from https://celgrid.ai/settings (optional for reading the guide and browsing public starter packs).",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "ANTHROPIC_API_KEY",
+          "description": "Optional BYOK Anthropic API key (pay Anthropic directly + flat 15% Celgrid orchestration fee).",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "CELGRID_URL",
+          "description": "Celgrid server URL (defaults to https://celgrid.ai; override for local self-hosted Studio).",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}
