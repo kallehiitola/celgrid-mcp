@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "io.github.kallehiitola/celgrid-mcp",
   "title": "Celgrid Pixel-Native Sprite & Animation Studio",
-  "description": "Generate exact 1:1 indexed pixel art sprites, frame-by-frame animations, AI Ripple Edits, and lossless Godot 4, Unity, Phaser 3, and Aseprite packs with zero diffusion mixels or alpha halos.",
+  "description": "Create indexed pixel sprites and animations. Export to Godot, Unity, Phaser, and Aseprite.",
   "websiteUrl": "https://celgrid.ai",
   "repository": {
     "url": "https://github.com/kallehiitola/celgrid-mcp",
@@ -35,6 +35,26 @@
           "description": "Celgrid server URL (defaults to https://celgrid.ai; override for local self-hosted Studio).",
           "isRequired": false,
           "isSecret": false
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://celgrid.ai/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Optional for public discovery. For account tools, provide Bearer followed by the personal key from https://celgrid.ai/settings#api-keys.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "X-Anthropic-Key",
+          "description": "Optional provider key for BYOK generation with a 15% prepaid Celgrid fee.",
+          "isRequired": false,
+          "isSecret": true
         }
       ]
     }

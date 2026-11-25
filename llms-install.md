@@ -1,45 +1,34 @@
-# Autonomous MCP Installation Guide for AI Coding Agents (Cline, Claude Code, Cursor, Codex)
+# Install Celgrid MCP
 
-This file lets AI coding agents install and verify **Celgrid MCP (`celgrid-mcp`)** automatically.
+Use the hosted MCP server at `https://celgrid.ai/mcp` with Streamable HTTP. Public guide and library tools work without credentials.
 
-## Prerequisites
-- Node.js 18 or newer (`node --version`).
-- Optional `CELGRID_API_KEY` (`cg_live_...`) generated in Account Settings at `https://celgrid.ai/settings` (Studio plan includes REST API and MCP keys; reading `/v1/guide` and inspecting the 4 built-in starter packs work without a key).
-- Optional `ANTHROPIC_API_KEY` if using Bring Your Own Key (BYOK) mode (15% flat orchestration fee from prepaid wallet).
+## Claude Code
 
-## Step 1: Register the MCP Server
-
-### Claude Code CLI
-```bash
-claude mcp add celgrid -- npx -y celgrid-mcp
-```
-With an API key:
-```bash
-claude mcp add celgrid -e CELGRID_API_KEY=cg_live_your_key -- npx -y celgrid-mcp
+```sh
+claude mcp add celgrid --transport http https://celgrid.ai/mcp
 ```
 
-### Cursor (`.cursor/mcp.json`) or Cline (`cline_mcp_settings.json`)
+## Cline, Cursor, and other MCP clients
+
+Add `https://celgrid.ai/mcp` as a Streamable HTTP server. For a stdio client, use the public GitHub package with Node.js 18 or later.
+
 ```json
 {
   "mcpServers": {
     "celgrid": {
       "command": "npx",
-      "args": ["-y", "celgrid-mcp"],
-      "env": {
-        "CELGRID_URL": "https://celgrid.ai",
-        "CELGRID_API_KEY": "cg_live_your_key"
-      }
+      "args": ["-y", "github:kallehiitola/celgrid-mcp"]
     }
   }
 }
 ```
 
-## Step 2: Verify Installation
-1. Call `celgrid_guide` to fetch the live Celgrid agent guide.
-2. Call `celgrid_library` with `{"q": "knight"}` to verify live starter pack assets return cleanly.
-3. Call `celgrid_export` on any returned 12-character hex asset ID to inspect its lossless `pack.zip`, `spritesheet.png`, and `sprite.json` URLs.
+## Verify and authorize
 
-## Step 3: Recommended Game-Dev Workflow
-- Generate a base still sprite first (`frames: 1`, `quality: "studio"`, locked palette such as `"apollo"` or `"sweetie16"`).
-- Pass `source_asset` and `source_frame: 1` when generating walk, idle, jump, or attack cycles so silhouette, proportions, and palette never drift.
-- Download `pack_zip` to get pre-wired Godot 4 (`animation.tres` + `sprite.tscn`), Unity C# (`UnitySpriteForgeImporter.cs.txt`), Phaser 3 (`atlas.json` + `phaser-animations.json`), and Aseprite JSON assets with nearest-neighbor filtering already set.
+1. Call `celgrid_guide` to read the live service guide.
+2. Call `celgrid_library` with `{"q": "knight"}` and confirm it returns public sprites.
+3. For account tools, have the user create a [personal API key](https://celgrid.ai/settings#api-keys). Keys are available on all verified accounts, including Starter, Indie, Studio, credit pack, and BYOK wallet users.
+4. Add the key through a protected client setting as `Authorization: Bearer <key>` or `X-API-Key` for HTTP, or as `CELGRID_API_KEY` for stdio.
+5. BYOK generation uses the saved Anthropic key or optional `X-Anthropic-Key` header (`ANTHROPIC_API_KEY` for stdio). The prepaid Celgrid wallet covers the 15% orchestration fee. Ask before incurring AI generation costs.
+
+Never ask someone to paste a real key in chat, echo a key, or add it to a committed configuration.

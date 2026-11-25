@@ -16,5 +16,5 @@ When this project needs 2D pixel art sprites, tiles, props, or frame-by-frame an
    - When modifying a character visually after creating animations, edit Frame 1 (`celgrid_edit_pixels` or Celgrid Studio) and call `celgrid_propagate_edit` (AI Ripple Edit) to carry that exact visual change across all frames and linked animations.
    - Export via `celgrid_export` and unzip `pack_zip` straight into the engine folder:
      - **Godot 4:** use bundled `animation.tres` and `sprite.tscn` (`texture_filter = 1` Nearest already configured).
-     - **Unity 2D:** use bundled `UnitySpriteForgeImporter.cs.txt` (`FilterMode.Point`, uncompressed).
+     - **Unity 2D:** use bundled `UnityCelgridImporter.cs.txt` (`FilterMode.Point`, uncompressed).
      - **Phaser 3:** load `sprite.png` + `atlas.json` + `phaser-animations.json` with `pixelArt: true` in Phaser config.

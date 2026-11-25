@@ -42,7 +42,7 @@ function rpc(id, method, params = {}) {
 
 try {
   const init = await rpc(1, "initialize", { protocolVersion: "2025-11-25", clientInfo: { name: "smoke", version: "1.0" } });
-  if (init.result?.serverInfo?.name !== "celgrid-mcp") throw new Error("Unexpected serverInfo");
+  if (init.result?.serverInfo?.name !== "celgrid") throw new Error("Unexpected serverInfo");
 
   const ping = await rpc(2, "ping");
   if (!ping.result) throw new Error("Ping failed");

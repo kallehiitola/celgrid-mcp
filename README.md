@@ -8,36 +8,31 @@ Built for both human game developers and AI coding agents making 2D games: inste
 
 - **Exact 1:1 Indexed Pixel Grids:** Zero mixels, zero blurry anti-aliasing, zero semi-transparent alpha fringe.
 - **Locked Game Palettes:** Built-in `apollo`, `sweetie16`, `endesga16`, `pico8`, `slso8`, `gameboy`, existing-asset palette locking, or custom hex ramps.
-- **Turnkey Engine Packs (`pack.zip`):** Ready-to-drop Godot 4 (`animation.tres` + `sprite.tscn` with Nearest filter), Unity C# (`UnitySpriteForgeImporter.cs.txt`), Phaser 3 (`atlas.json` + `phaser-animations.json`), and Aseprite JSON.
+- **Turnkey Engine Packs (`pack.zip`):** Ready-to-drop Godot 4 (`animation.tres` + `sprite.tscn` with Nearest filter), Unity C# (`UnityCelgridImporter.cs.txt`), Phaser 3 (`atlas.json` + `phaser-animations.json`), and Aseprite JSON.
 - **Hybrid Human + AI Control:** Open any generated sprite in the $0 browser Studio (`https://celgrid.ai/studio`), edit one frame by hand, and run `celgrid_propagate_edit` (AI Ripple Edit) to apply that edit across every frame and linked animation.
 - **Zero Dependencies:** Pure Node.js standard library (`>= 18`), clean audit surface.
 
-## Quick Setup
+## Connect Celgrid MCP
 
-### Claude Code
-```bash
-claude mcp add celgrid -e CELGRID_API_KEY=cg_live_your_key -- npx -y github:kallehiitola/celgrid-mcp
-```
-*(Or `npx -y celgrid-mcp` once published on npm. Works without an API key for `celgrid_guide` and `celgrid_library`.)*
+Start in Claude Code with the hosted Streamable HTTP server. You can call `celgrid_guide` and `celgrid_library` without signing in.
 
-### Cursor (`.cursor/mcp.json`) / Cline / Windsurf
-```json
-{
-  "mcpServers": {
-    "celgrid": {
-      "command": "npx",
-      "args": ["-y", "github:kallehiitola/celgrid-mcp"],
-      "env": {
-        "CELGRID_URL": "https://celgrid.ai",
-        "CELGRID_API_KEY": "cg_live_your_key"
-      }
-    }
-  }
-}
+```sh
+claude mcp add celgrid --transport http https://celgrid.ai/mcp
 ```
 
-### Bring Your Own Anthropic Key (BYOK, 15% Fee)
-Add `"ANTHROPIC_API_KEY": "sk-ant-..."` to `env` to route generation directly through your own Anthropic key (`X-Anthropic-Key` header) with a flat 15% Celgrid orchestration fee from your prepaid fee wallet ($0.50 free starter fee credit on verified signup).
+For account tools, create a [personal API key](https://celgrid.ai/settings#api-keys). Verified Starter, Indie, and Studio accounts can create keys, including customers using only a prepaid credit pack or BYOK wallet. Configure the hosted connection with `Authorization: Bearer <key>` or `X-API-Key: <key>`. Store the key in your client's secret settings.
+
+For BYOK generation, use your saved Anthropic key from Settings or pass `X-Anthropic-Key` alongside the Celgrid key. Anthropic bills your account directly. Celgrid deducts a 15% orchestration fee from your prepaid fee wallet.
+
+### Stdio fallback
+
+Use Node.js 18 or later. Claude Code can install the public GitHub package directly.
+
+```sh
+claude mcp add celgrid -- npx -y github:kallehiitola/celgrid-mcp
+```
+
+For other stdio clients, use command `npx` with arguments `-y` and `github:kallehiitola/celgrid-mcp`. Pass `CELGRID_API_KEY` and optionally `ANTHROPIC_API_KEY` through the client's environment. `CELGRID_URL` defaults to `https://celgrid.ai`.
 
 ## Available MCP Tools (10)
 
@@ -56,8 +51,10 @@ Add `"ANTHROPIC_API_KEY": "sk-ant-..."` to `env` to route generation directly th
 
 ## Pricing & Free Tier
 - **Manual Browser Editor & Lossless Exports:** $0 forever at `https://celgrid.ai/studio`
-- **Starter:** 25 free AI credits + $0.50 BYOK fee credit on verified account
-- **Indie:** $19/mo (750 cr/mo) | **Studio:** $49/mo (2,200 cr/mo, includes REST API & MCP keys) | **BYOK:** $0/mo + 15% orchestration fee
+- **Starter:** 25 one-time AI credits and $0.50 BYOK fee credit for eligible verified accounts. 2 personal keys and 20 hosted MCP requests per minute. Free managed AI usage is subject to the Starter cap.
+- **Indie:** $19/mo, 750 credits per month, 5 personal keys, and 60 hosted MCP requests per minute.
+- **Studio:** $49/mo, 2,200 credits per month, 90-day rollover, priority jobs, pipeline cost telemetry, 20 personal keys, and 120 hosted MCP requests per minute.
+- **One-time packs and BYOK:** Use a personal key on your verified account. A subscription is optional.
 
 ## License
 MIT License - Ludoitte Oy. See [LICENSE](./LICENSE).

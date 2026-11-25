@@ -348,7 +348,7 @@ async function handleMessage(msg) {
     const supported = ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25"];
     out.result = {
       protocolVersion: supported.includes(requested) ? requested : supported[supported.length - 1],
-      serverInfo: { name: "celgrid-mcp", version: "1.0.0" },
+      serverInfo: { name: "celgrid", version: "1.0.0" },
       capabilities: { tools: {} },
       instructions: INSTRUCTIONS,
     };

@@ -40,7 +40,8 @@
     "LICENSE",
     "llms-install.md",
     "server.json",
-    "smithery.yaml"
+    "smithery.yaml",
+    "SKILL.md"
   ],
   "engines": {
     "node": ">=18.0.0"
