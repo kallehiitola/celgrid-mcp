@@ -61,3 +61,9 @@ For other stdio clients, use command `npx` with arguments `-y` and `github:kalle
 
 ## License
 MIT License - Ludoitte Oy. See [LICENSE](./LICENSE).
+
+## Playable MIT Engine Starters (Pre-Wired with Celgrid Sprites & MCP Rules)
+
+- **Godot 4.3+:** [kallehiitola/celgrid-mcp-godot-starter](https://github.com/kallehiitola/celgrid-mcp-godot-starter) (native `SpriteFrames` `.tres`, `sprite.tscn`, integer pixel viewport)
+- **Unity 2D:** [kallehiitola/celgrid-mcp-unity-starter](https://github.com/kallehiitola/celgrid-mcp-unity-starter) (one-click `Assets/Editor/CelgridImporter.cs` `.anim` importer + `CryptboundPlayer2D.cs`)
+- **Phaser 3:** [kallehiitola/celgrid-mcp-phaser-starter](https://github.com/kallehiitola/celgrid-mcp-phaser-starter) (playable dungeon room in 10 seconds with `pixelArt: true`)
